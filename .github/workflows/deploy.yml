@@ -1,0 +1,16 @@
+name: Manual Docker Deployment Tag
+
+on:
+  workflow_dispatch:
+
+jobs:
+  notify-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify GitHub of Deployment
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: Production
+          ref: main
+          description: Deployed manually via Docker
